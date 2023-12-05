@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("appointmentForm").onsubmit = function() {
-        var patientName = document.getElementById("patientName").value;
-        var appointmentDate = document.getElementById("appointmentDate").value;
+    var form = document.querySelector("form");
 
-        if (patientName === "" || appointmentDate === "") {
-            alert("All fields are required!");
-            return false;
+    form.onsubmit = function(event) {
+        var name = document.querySelector("input[name='name']").value;
+        var email = document.querySelector("input[name='email']").value;
+        var message = document.querySelector("textarea[name='message']").value;
+
+        if (!name || !email || !message) {
+            alert("Please fill out all fields.");
+            event.preventDefault(); // Prevent form submission
         }
-
-        return true;
     };
 });
